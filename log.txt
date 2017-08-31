@@ -1,0 +1,54 @@
+(pk140) [enigmadocs/custom-helloworld ]$ workon pk131
+
+(pk131) [enigmadocs/custom-helloworld ]$ parsekit run
+
+INFO     {'log_date_format': None, 'profiling': False, 'log_level': None, 'parser_basepath': None, 'firstname': 'Peter', 'resume': False, 'no_interactive': False, 'subcommand': 'run', 'allow_unsafe': False, 'working_dir': None, 'debug_mode': False, 'context': None, 'log_dest': None, 'output_adapter': None, 'log_format': None, 'name': 'data'}
+INFO     Hello Peter
+INFO     Parse completed with no unexpected errors.
+
+(pk131) [enigmadocs/custom-helloworld ]$ workon pk140
+
+(pk140) [enigmadocs/custom-helloworld ]$ parsekit run
+
+[info     ] Starting pipeline              pipeline_name='extract' time='2017-08-31T17:04:26.202829Z'
+[info     ] Completed pipeline             elapsed_time=0.09505391120910645 pipeline_name='extract' time='2017-08-31T17:04:26.292026Z'
+[critical ] An error occurred              name='TypeError' time='2017-08-31T17:04:26.292226Z'
+Traceback (most recent call last):
+  File "build/bdist.macosx-10.12-x86_64/egg/parsekit/cli/__init__.py", line 79, in init
+  File "build/bdist.macosx-10.12-x86_64/egg/parsekit/cli/command_run.py", line 118, in run
+  File "build/bdist.macosx-10.12-x86_64/egg/parsekit/core/flow.py", line 59, in run
+  File "build/bdist.macosx-10.12-x86_64/egg/parsekit/core/flow.py", line 85, in assign
+  File "build/bdist.macosx-10.12-x86_64/egg/parsekit/core/pipeline.py", line 93, in _run_step
+  File "/Users/peterhenderson/code/enigmadocs/custom-helloworld/lib/hello_world.py", line 6, in run
+    self.log.info(metadata)
+  File "/Users/peterhenderson/.virtualenvs/pk140/lib/python2.7/site-packages/structlog/_base.py", line 176, in _proxy_to_logger
+    args, kw = self._process_event(method_name, event, event_kw)
+  File "/Users/peterhenderson/.virtualenvs/pk140/lib/python2.7/site-packages/structlog/_base.py", line 136, in _process_event
+    event_dict = proc(self._logger, method_name, event_dict)
+  File "/Users/peterhenderson/.virtualenvs/pk140/lib/python2.7/site-packages/structlog/dev.py", line 111, in __call__
+    RESET_ALL + " "
+  File "/Users/peterhenderson/.virtualenvs/pk140/lib/python2.7/site-packages/structlog/dev.py", line 36, in _pad
+    return s + " " * (missing if missing > 0 else 0)
+TypeError: unsupported operand type(s) for +: 'Metadata' and 'str'
+
+  ⬇  An error occurred. See below for details. ⬇
+
+  ParseKit encountered an unexpected error while attempting to "Store your name in the record" ("step 1 of 2 in "extract" pipeline).
+
+    Traceback (most recent call last):
+      File "build/bdist.macosx-10.12-x86_64/egg/parsekit/cli/__init__.py", line 79, in init
+      File "build/bdist.macosx-10.12-x86_64/egg/parsekit/cli/command_run.py", line 118, in run
+      File "build/bdist.macosx-10.12-x86_64/egg/parsekit/core/flow.py", line 59, in run
+      File "build/bdist.macosx-10.12-x86_64/egg/parsekit/core/flow.py", line 85, in assign
+      File "build/bdist.macosx-10.12-x86_64/egg/parsekit/core/pipeline.py", line 93, in _run_step
+      File "/Users/peterhenderson/code/enigmadocs/custom-helloworld/lib/hello_world.py", line 6, in run
+        self.log.info(metadata)
+      File "/Users/peterhenderson/.virtualenvs/pk140/lib/python2.7/site-packages/structlog/_base.py", line 176, in _proxy_to_logger
+        args, kw = self._process_event(method_name, event, event_kw)
+      File "/Users/peterhenderson/.virtualenvs/pk140/lib/python2.7/site-packages/structlog/_base.py", line 136, in _process_event
+        event_dict = proc(self._logger, method_name, event_dict)
+      File "/Users/peterhenderson/.virtualenvs/pk140/lib/python2.7/site-packages/structlog/dev.py", line 111, in __call__
+        RESET_ALL + " "
+      File "/Users/peterhenderson/.virtualenvs/pk140/lib/python2.7/site-packages/structlog/dev.py", line 36, in _pad
+        return s + " " * (missing if missing > 0 else 0)
+    TypeError: unsupported operand type(s) for +: 'Metadata' and 'str'

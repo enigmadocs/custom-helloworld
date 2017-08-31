@@ -1,0 +1,10 @@
+dependencies:
+ 'lib.hello_world': 'world'
+
+extract:
+  - step: Store your name in the record
+    action: world.SaveName
+    firstname: Peter
+
+  - step: Say hello to the world.
+    action: world.SayHello
